@@ -4,6 +4,7 @@
 
 <div align="center">
   <a href="https://github.com/evagr11/SIMCRA" target="_blank"><img src="https://img.shields.io/badge/Ver_Código-0B0F14?style=for-the-badge&logo=github&logoColor=white" alt="Ver Código"></a>
+  <a href="https://github.com/evagr11/SIMCRA/releases/latest" target="_blank"><img src="https://img.shields.io/badge/Descargar_APK-F59E0B?style=for-the-badge&logo=android&logoColor=black" alt="Descargar APK"></a>
 </div>
 
 <div align="center">
@@ -95,7 +96,13 @@ SIMCRA/
 
 # 🚀 Cómo Utilizar el Proyecto
 
-Para ejecutarlo necesitas **Android Studio** y el **JDK 11** o superior.
+### 📲 Instalar la APK
+
+Si solo quieres probar la app, descarga la APK de la [última versión](https://github.com/evagr11/SIMCRA/releases/latest) e instálala en tu móvil Android (7.0 o superior). Es posible que tengas que permitir la instalación desde **orígenes desconocidos**.
+
+### 🛠️ Ejecutar desde el código
+
+Necesitas **Android Studio** y el **JDK 11** o superior.
 
 1.  **Clona el repositorio:**
     ```bash
