@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_estadisticas"
+        android:icon="@mipmap/ic_menu"
+        android:title="Estadisticas" />
+    <item
+        android:id="@+id/nav_desaparecidos"
+        android:icon="@mipmap/ic_person"
+        android:title="Desaparecidos" />
+    <item
+        android:id="@+id/nav_alert"
+        android:icon="@mipmap/ic_alert"
+        android:title="Alertas" />
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@mipmap/ic_home"
+        android:title="Inicio" />
+
+</menu>
