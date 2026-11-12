@@ -13,12 +13,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gestiona las fichas de desaparecidos guardadas en {@code desaparecidos.txt}.
+ *
+ * <p>Las fichas de cada día solo se ven cuando ha llegado la alerta de reportes
+ * de ese día.</p>
+ */
 public class DesaparecidosManager {
 
     private static final String ARCHIVO = "desaparecidos.txt";
     private static final String PREFS = "PreferenciasApp";
+    /**
+     * Clave de preferencias con el último día de fichas desbloqueado a mano.
+     */
     public static final String CLAVE_DIA = "dia_actual";
 
+    /**
+     * Crea el fichero la primera vez, lo lee y devuelve las fichas que ya se pueden ver.
+     *
+     * @param context contexto de la app
+     * @return las fichas desbloqueadas hasta hoy (vacía si aún no ha llegado ningún reporte)
+     */
     public static List<Desaparecido> cargarDesaparecidos(Context context) {
         File archivo = new File(context.getFilesDir(), ARCHIVO);
 
@@ -69,6 +84,10 @@ public class DesaparecidosManager {
     }
 
     // Último día cuya alerta de "reportes" ya ha llegado: los desaparecidos de ese día pasan a verse
+    /**
+     * @param context contexto de la app
+     * @return el último día cuya alerta de reportes ya ha llegado
+     */
     private static int diaDeReportesDesbloqueado(Context context) {
         int dia = 1;
         for (com.example.simcra2.Model.Alerta a : AlertasManager.obtenerAlertasDisponibles(context)) {
@@ -80,6 +99,10 @@ public class DesaparecidosManager {
         return dia;
     }
 
+    /**
+     * @param context contexto de la app
+     * @return {@code true} si ya ha llegado alguna alerta de reportes o desaparecidos
+     */
     public static boolean alertaDesaparecidosActiva(Context context) {
         List<com.example.simcra2.Model.Alerta> alertas = com.example.simcra2.Controller.AlertasManager.obtenerAlertasDisponibles(context);
         for (com.example.simcra2.Model.Alerta a : alertas) {
@@ -92,6 +115,11 @@ public class DesaparecidosManager {
     }
 
 
+    /**
+     * Escribe las 129 fichas iniciales, repartidas por días.
+     *
+     * @param archivo fichero {@code desaparecidos.txt}
+     */
     private static void crearArchivoInicial(File archivo) {
         try (FileWriter writer = new FileWriter(archivo)) {
             // DÍA 1

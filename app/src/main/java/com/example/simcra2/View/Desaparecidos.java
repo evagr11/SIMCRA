@@ -11,10 +11,16 @@ import com.example.simcra2.R;
 
 import java.util.List;
 
+/**
+ * Pantalla con el registro de desaparecidos desbloqueados hasta hoy.
+ */
 public class Desaparecidos extends BaseActivity {
 
     private RecyclerView recyclerView;
 
+    /**
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

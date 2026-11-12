@@ -8,7 +8,18 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.example.simcra2.R;
 
+/**
+ * Recibe las alarmas programadas por {@link AlertasManager} y las enseña como notificación,
+ * aunque la app esté cerrada.
+ */
 public class AlertaReceiver extends BroadcastReceiver {
+    /**
+     * Crea la notificación con el título y el mensaje que trae el Intent,
+     * si hay permiso para notificar.
+     *
+     * @param context contexto de la app
+     * @param intent  Intent de la alarma, con los extras {@code titulo} y {@code mensaje}
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         String titulo = intent.getStringExtra("titulo");

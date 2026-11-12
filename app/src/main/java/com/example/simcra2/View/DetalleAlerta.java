@@ -6,8 +6,16 @@ import android.widget.TextView;
 import com.example.simcra2.Model.Alerta;
 import com.example.simcra2.R;
 
+/**
+ * Texto completo de una alerta.
+ */
 public class DetalleAlerta extends BaseActivity {
 
+    /**
+     * Lee la alerta del Intent y enseña su titular y su texto ampliado.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

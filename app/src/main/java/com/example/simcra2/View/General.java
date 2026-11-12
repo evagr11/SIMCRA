@@ -24,6 +24,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Pantalla de inicio: fecha, batería en tiempo real, datos del móvil
+ * y valores del giroscopio y del acelerómetro.
+ */
 public class General extends BaseActivity {
 
     private SensorManager sensorManager;
@@ -31,6 +35,9 @@ public class General extends BaseActivity {
     private BroadcastReceiver batteryReceiver;
     private TextView txtFecha, txtBateria, txtHardware, txtGiroscopio, txtAcelerometro;
 
+    /**
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +69,9 @@ public class General extends BaseActivity {
 
     }
 
+    /**
+     * Registra un receptor que actualiza el porcentaje de batería.
+     */
     public void Bateria(){
         batteryReceiver = new BroadcastReceiver() {
             @Override
@@ -75,6 +85,9 @@ public class General extends BaseActivity {
         registerReceiver(batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
 
+    /**
+     * Enseña el fabricante, el modelo y la versión de Android.
+     */
     public void Hardware(){
         String modelo = Build.MODEL;
         String fabricante = Build.MANUFACTURER;
@@ -83,6 +96,9 @@ public class General extends BaseActivity {
         txtHardware.setText(hardware);
     }
 
+    /**
+     * Prepara el listener del giroscopio y del acelerómetro.
+     */
     public void Sensores(){
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensorGiroscopio = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
@@ -108,6 +124,9 @@ public class General extends BaseActivity {
 
     }
 
+    /**
+     * Deja de escuchar los sensores y la batería al salir de la pantalla.
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -119,6 +138,9 @@ public class General extends BaseActivity {
         }
     }
 
+    /**
+     * Vuelve a escuchar los sensores y la batería al volver a la pantalla.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -137,6 +159,9 @@ public class General extends BaseActivity {
         }
     }
 
+    /**
+     * @return la fecha de hoy en español, por ejemplo «Hoy es Jueves 12 noviembre 2026»
+     */
     private static String obtenerFecha() {
         SimpleDateFormat formato = new SimpleDateFormat("EEEE d MMMM yyyy", new Locale("es", "ES"));
         String fecha = formato.format(new Date());

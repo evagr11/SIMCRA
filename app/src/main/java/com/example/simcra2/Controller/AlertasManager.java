@@ -27,12 +27,25 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Genera, guarda, programa y lee las 33 alertas de los 7 días.
+ *
+ * <p>Las alertas se escriben en {@code alertas.txt} (una por línea, con los campos
+ * separados por {@code |}) a partir del día en que se abre la app por primera vez,
+ * y cada una se programa con {@code AlarmManager} para que llegue a su hora.</p>
+ */
 public class AlertasManager {
 
     private static final String PREFS = "PreferenciasApp";
     private static final String CLAVE_INDICE = "indice_alerta_manual";
     private static final boolean MODO_DESARROLLADOR = false; // Cambia a false en la app automática
 
+    /**
+     * Devuelve las alertas cuya hora ya ha pasado.
+     *
+     * @param context contexto para leer {@code alertas.txt}
+     * @return las alertas que ya han llegado, en orden de llegada
+     */
     public static List<Alerta> obtenerAlertasDisponibles(Context context) {
         List<Alerta> lista = new ArrayList<>();
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return lista;
@@ -86,6 +99,12 @@ public class AlertasManager {
         return lista;
     }
 
+    /**
+     * Desbloquea la siguiente alerta sin esperar a su hora. Solo lo usa el botón
+     * de desarrollo, que está desactivado en la app.
+     *
+     * @param context contexto de la app
+     */
     public static void avanzarAlertaManual(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         int actual = prefs.getInt(CLAVE_INDICE, 0);
@@ -110,6 +129,10 @@ public class AlertasManager {
 
 
 
+    /**
+     * @param context contexto para leer {@code alertas.txt}
+     * @return todas las alertas, hayan llegado o no
+     */
     private static List<Alerta> obtenerTodasLasAlertas(Context context) {
         List<Alerta> lista = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(
@@ -128,6 +151,13 @@ public class AlertasManager {
         return lista;
     }
 
+    /**
+     * Calcula a qué día de la historia (1 a 7) corresponde una fecha.
+     *
+     * @param fechaStr fecha con el formato {@code yyyy-MM-dd HH:mm}
+     * @param context  contexto para leer la fecha de inicio guardada
+     * @return el día de la historia, o 1 si no se puede calcular
+     */
     public static int calcularDiaDesdeFecha(String fechaStr, Context context) {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
@@ -151,6 +181,15 @@ public class AlertasManager {
         }
     }
 
+    /**
+     * Programa una alarma exacta que lanzará {@link AlertaReceiver} a esa hora.
+     * No hace nada si el sistema no permite alarmas exactas.
+     *
+     * @param context        contexto de la app
+     * @param titulo         título de la notificación
+     * @param mensaje        texto de la notificación
+     * @param tiempoEnMillis momento en que debe saltar
+     */
     public static void programarNotificacion(Context context, String titulo, String mensaje, long tiempoEnMillis) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -173,6 +212,11 @@ public class AlertasManager {
     }
 
 
+    /**
+     * Programa la notificación de todas las alertas guardadas.
+     *
+     * @param context contexto de la app
+     */
     public static void programarTodasLasAlertas(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
 
@@ -191,12 +235,24 @@ public class AlertasManager {
     }
 
 
+    /**
+     * Abre la pantalla con el texto completo de una alerta.
+     *
+     * @param context contexto desde el que se abre
+     * @param alerta  alerta que se muestra
+     */
     public static void abrirDetalle(Context context, Alerta alerta) {
         Intent intent = new Intent(context, DetalleAlerta.class);
         intent.putExtra("alerta", alerta);
         context.startActivity(intent);
     }
 
+    /**
+     * Escribe en {@code alertas.txt} las alertas de los 7 días a partir de hoy
+     * y programa su notificación.
+     *
+     * @param context contexto de la app
+     */
     public static void generarAlertas(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
 

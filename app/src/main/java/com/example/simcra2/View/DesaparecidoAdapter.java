@@ -14,6 +14,9 @@ import com.example.simcra2.R;
 import java.util.List;
 
 // Adaptador para mostrar personas desaparecidas en un RecyclerView
+/**
+ * Adaptador del RecyclerView de desaparecidos.
+ */
 public class DesaparecidoAdapter extends RecyclerView.Adapter<DesaparecidoAdapter.ViewHolder> {
 
     // Lista de objetos Desaparecido que se van a mostrar
@@ -21,17 +24,27 @@ public class DesaparecidoAdapter extends RecyclerView.Adapter<DesaparecidoAdapte
     private Context context;
 
     // Constructor que recibe el contexto y la lista de desaparecidos
+    /**
+     * @param context contexto de la lista
+     * @param lista   fichas que se muestran
+     */
     public DesaparecidoAdapter(Context context, List<Desaparecido> lista) {
         this.context = context;
         this.lista = lista;
     }
 
     // ViewHolder que representa cada ítem
+    /**
+     * Referencias a las vistas de {@code item_desaparecido}.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Referencias a los TextView del layout item_desaparecido.xml
         TextView txtNombre, txtUbicacion;
 
         // Constructor del ViewHolder: enlaza los elementos visuales
+        /**
+         * @param itemView vista de la ficha
+         */
         public ViewHolder(View itemView) {
             super(itemView);
             txtNombre = itemView.findViewById(R.id.txtNombre);
@@ -39,6 +52,12 @@ public class DesaparecidoAdapter extends RecyclerView.Adapter<DesaparecidoAdapte
         }
 
         // Asigna los datos del desaparecido
+        /**
+         * Pinta el nombre con la edad y la descripción.
+         *
+         * @param d       ficha que se muestra
+         * @param context contexto de la lista
+         */
         public void bind(Desaparecido d, Context context) {
             // Formatea el nombre con la edad entre paréntesis
             txtNombre.setText(d.nombre + " (" + d.edad + ")");
@@ -49,6 +68,11 @@ public class DesaparecidoAdapter extends RecyclerView.Adapter<DesaparecidoAdapte
     }
 
     // Metodo que crea una nueva vista para un ítem cuando es necesario
+    /**
+     * @param parent   grupo de vistas padre
+     * @param viewType tipo de vista (solo hay uno)
+     * @return el ViewHolder creado
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // define cómo se ve cada desaparecido
@@ -57,6 +81,10 @@ public class DesaparecidoAdapter extends RecyclerView.Adapter<DesaparecidoAdapte
         return new ViewHolder(vista);
     }
 
+    /**
+     * @param holder   ficha que se rellena
+     * @param position posición en la lista
+     */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // Obtiene el desaparecido en la posición actual y lo muestra en la vista
@@ -64,6 +92,9 @@ public class DesaparecidoAdapter extends RecyclerView.Adapter<DesaparecidoAdapte
     }
 
     // Devuelve el número total de elementos en la lista
+    /**
+     * @return el número de fichas
+     */
     @Override
     public int getItemCount() {
         return lista.size();

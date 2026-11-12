@@ -9,10 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.simcra2.R;
 
+/**
+ * Segunda pantalla de la introducción: cómo funciona su red satelital ficticia.
+ */
 public class Info2 extends AppCompatActivity {
 
     private Button btnAcceder;
 
+    /**
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

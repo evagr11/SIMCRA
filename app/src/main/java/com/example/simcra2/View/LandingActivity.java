@@ -16,12 +16,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.simcra2.Controller.LandingController;
 import com.example.simcra2.R;
 
+/**
+ * Pantalla de carga: pide los permisos y arranca la historia con {@link com.example.simcra2.Controller.LandingController}.
+ */
 public class LandingActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private Button btnAcceder;
     private LandingController controller;
 
+    /**
+     * Enseña la barra de carga, crea el canal y pide los permisos que falten.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +65,13 @@ public class LandingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Si se concede el permiso de notificaciones, comprueba las alarmas exactas.
+     *
+     * @param requestCode  código de la petición (100)
+     * @param permissions  permisos pedidos
+     * @param grantResults resultado de cada permiso
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -70,6 +85,9 @@ public class LandingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Al volver de los ajustes, vuelve a comprobar las alarmas exactas si aún no se ha hecho.
+     */
     @Override
     protected void onResume() {
         super.onResume();

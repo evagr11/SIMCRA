@@ -12,12 +12,20 @@ import com.example.simcra2.R;
 import java.time.LocalDate;
 
 
+/**
+ * Encuesta diaria que hay que contestar antes de ver las estadísticas.
+ */
 public class EncuestaEmocional extends BaseActivity {
 
     private static final String PREFS = "PreferenciasApp";
     private static final String CLAVE_ENCUESTA = "encuesta_realizada";
     private static final String CLAVE_FECHA = "fecha_encuesta";
 
+    /**
+     * Al enviar, guarda la fecha de hoy y abre las estadísticas.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -4,6 +4,9 @@
 
 <div align="center">
   <a href="https://github.com/evagr11/SIMCRA" target="_blank"><img src="https://img.shields.io/badge/Ver_Código-0B0F14?style=for-the-badge&logo=github&logoColor=white" alt="Ver Código"></a>
+  <a href="https://evagr11.github.io/SIMCRA/javadoc/" target="_blank"><img src="https://img.shields.io/badge/Javadoc-7F1D1D?style=for-the-badge&logo=openjdk&logoColor=white" alt="Javadoc"></a>
+  <a href="https://www.figma.com/design/9oJ08BqDBXxgYToGxyaQNH/SIMCRA" target="_blank"><img src="https://img.shields.io/badge/Figma-F59E0B?style=for-the-badge&logo=figma&logoColor=black" alt="Figma"></a>
+  <a href="https://evagr11.github.io/Curriculum/proyectos/simcra.html" target="_blank"><img src="https://img.shields.io/badge/Ver_Web-7F1D1D?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Ver Web"></a>
   <a href="https://github.com/evagr11/SIMCRA/releases/latest" target="_blank"><img src="https://img.shields.io/badge/Descargar_APK-F59E0B?style=for-the-badge&logo=android&logoColor=black" alt="Descargar APK"></a>
 </div>
 
@@ -65,6 +68,7 @@ Esta es la **segunda versión** del proyecto: en ella la lógica de la pantalla 
 
 ```bash
 SIMCRA/
+├── docs/javadoc/                          # Javadoc generado (publicado en GitHub Pages)
 └── app/src/main/
     ├── java/com/example/simcra2/
     │   ├── Model/

@@ -9,8 +9,18 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.example.simcra2.R;
 
+/**
+ * Lanza una notificación inmediata en el canal de alertas.
+ */
 public class NotificacionSimcra {
 
+    /**
+     * Muestra la notificación si hay permiso para notificar.
+     *
+     * @param context contexto de la app
+     * @param titulo  título de la notificación
+     * @param mensaje texto de la notificación
+     */
     public static void lanzar(Context context, String titulo, String mensaje) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (context.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)

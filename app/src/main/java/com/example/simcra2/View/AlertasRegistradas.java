@@ -14,11 +14,19 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Lista de las alertas que ya han llegado, de la más nueva a la más antigua.
+ */
 public class AlertasRegistradas extends BaseActivity {
 
     private ListView listView;
     private AlertaAdapter adapter;
 
+    /**
+     * Genera las alertas si hace falta, las carga en la lista y abre el detalle al pulsar una.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -6,10 +6,16 @@ import android.widget.ProgressBar;
 import com.example.simcra2.R;
 
 
+/**
+ * Barras de agua, energía, comida y moral, con valores simulados.
+ */
 public class EstadisticasRecursos extends BaseActivity {
 
     private ProgressBar barAgua, barEnergia, barComida, barMoral;
 
+    /**
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +33,9 @@ public class EstadisticasRecursos extends BaseActivity {
     }
 
 
+    /**
+     * Da a cada barra un valor aleatorio entre 30 y 100.
+     */
     private void actualizarBarras() {
         java.util.Random random = new java.util.Random();
 

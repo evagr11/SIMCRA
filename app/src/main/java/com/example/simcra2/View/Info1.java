@@ -9,11 +9,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.simcra2.R;
 
+/**
+ * Primera pantalla de la introducción: qué es SIMCRA.
+ */
 public class Info1 extends AppCompatActivity {
 
     private Button btnMasInfo;
     private Button btnAcceder;
 
+    /**
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

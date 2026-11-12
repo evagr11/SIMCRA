@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.example.simcra2.Controller"},{"l":"com.example.simcra2.Model"},{"l":"com.example.simcra2.View"}];updateSearchResults();

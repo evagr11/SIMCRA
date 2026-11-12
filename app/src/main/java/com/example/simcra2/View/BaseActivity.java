@@ -20,16 +20,32 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
 
+/**
+ * Activity base de las pantallas con navegación inferior
+ * (Inicio, Alertas, Desaparecidos y Estadísticas).
+ */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    /**
+     * Barra de navegación inferior de la pantalla.
+     */
     protected BottomNavigationView bottomNavigationView;
 
+    /**
+     * Activa el modo de pantalla completa (edge-to-edge).
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
     }
 
+    /**
+     * Añade un botón flotante para adelantar alertas mientras se prueba la app.
+     * No se usa en la versión publicada.
+     */
     private void agregarBotonDesarrollador() {
         Button btnDev = new Button(this);
         btnDev.setText("⏩");
@@ -57,6 +73,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Marca la pestaña actual y abre la pantalla elegida. Las estadísticas piden
+     * antes la encuesta emocional si no se ha hecho hoy.
+     *
+     * @param selectedItemId id de la pestaña de esta pantalla
+     */
     protected void configurarBottomNavigation(int selectedItemId) {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         if (bottomNavigationView == null) return;
